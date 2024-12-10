@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class CM_14_15 {
-    static int[] stok = new int[10];
-    static String[][] item = new String[10][2];
+    static int[] stok = new int[0];
+    static String[][] item = new String[0][2];
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -21,10 +21,10 @@ public class CM_14_15 {
             } else if (menu == 2) {
                 
             } else if (menu == 3) {
-                
+                tambahItem();
             } 
             
-        } while (menu==4);
+        } while (menu!=4);
     }
 
     static void tampilkanInventori() {
@@ -37,10 +37,36 @@ public class CM_14_15 {
             }
             System.out.print((i + 1) + "\t");
             for (int j = 0; j < item[i].length; j++) {
-                System.out.print(item[i][0] + "\t");
+                System.out.print(item[i][0] + " \t");
             }
             System.out.print(stok[i] + "\n");
         }
+    }
+
+
+
+    static void tambahItem() {
+        System.out.println("===== TAMBAH ITEM BARU =====");
+        System.out.print("Masukkan Nama Item: ");
+        String nama = sc.nextLine();
+        System.out.print("Masukkan Kategori: ");
+        String kategori = sc.nextLine();
+        System.out.print("Masukkan Stok: ");
+        int jumlahStok = sc.nextInt();
+        sc.nextLine();
+        String[][] itemBaru = new String[item.length + 1][2];
+        int[] stokBaru = new int[stok.length + 1];
+
+        for (int i = 0; i < item.length; i++) {
+            itemBaru[i] = item[i];
+            stokBaru[i] = stok[i];
+        }
+
+        itemBaru[item.length] = new String[]{nama, kategori};
+        stokBaru[stok.length] = jumlahStok;
+
+        item = itemBaru;
+        stok = stokBaru;
     }
 
 
